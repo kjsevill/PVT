@@ -18,3 +18,4 @@ def hello(name):
 if __name__ == "__main__":
     xw.Book("control.xlsm").set_mock_caller()
     main()
+print("HOLA MUNDO")
