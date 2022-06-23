@@ -22,8 +22,9 @@ def main():
     sheet = wb.sheets["Datos"]
 
     #Calculate Bo
-    params = sheet[DET_VALUES].options(pd.DataFrame, index= False, expand= "table").value
-    sheet[DET_BO].value = BO(params)
+    params = sheet[DET_VALUES].options(np.array, transpose=True).value
+    print(params)
+    sheet[DET_BO].value = BO(*params)
 
 
 
