@@ -16,5 +16,5 @@ def hello(name):
 
 
 if __name__ == "__main__":
-    xw.Book("Controller.xlsm").set_mock_caller()
+    xw.Book("control.xlsm").set_mock_caller()
     main()
