@@ -1,4 +1,8 @@
 import xlwings as xw
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 from PVT.model.BO import BO
 
 #Create names for sheets
@@ -10,10 +14,16 @@ VALORES = "Valores"
 VARIABLES = "Variables"
 
 
+DET_VALUES = "BO_Valores"
+DET_BO = "Bo"
 
 def main():
     wb = xw.Book.caller()
     sheet = wb.sheets["Datos"]
+
+    #Calculate Bo
+    params = sheet[DET_VALUES].options(pd.DataFrame, index= False, expand= "table").value
+    sheet[DET_BO].value = BO(params)
 
 
 
