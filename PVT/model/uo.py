@@ -18,9 +18,7 @@ def uo(colums, API, T):
     a= 10**(0.43 + (8.33/API))
     a1=(10.313 * math.log10(T-460)) - 36.447
     if colums == "Beal":
-        uo=(0.320 + ((1.8*(10**T))/(API**4.53))) * (360/(T-260))**a
+        uo=(0.32 + ((1.8*(10**T))/(API**4.53))) * (360/(T-260))**a
     else:
         uo= 3.141 * (10**10) * (T-460)**(-3.414) * (math.log10(API))**a1
     return uo
-uyo=uo("Beal",27, 5000)
-print(uyo)

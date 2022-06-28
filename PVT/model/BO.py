@@ -15,9 +15,9 @@ def Bo(colums,Rs, Yg, Yo, T ):
     Returns
         float number  -> Bo
     """
-    a=0.742300
-    b=0.323200
-    c=-1.2020
+    a=0.7423
+    b=0.3232
+    c=-1.202
     F = (Rs**a) * (Yg**b) * (Yo**c)
 
     if colums == "Standing":
