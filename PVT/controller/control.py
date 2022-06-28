@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from PVT.model.BO import BO
+from PVT.model.BO import Bo
 
 #Create names for sheets
 SHEET_SUMMAR = "Datos"
@@ -26,17 +26,15 @@ PB_STANDING = "Pb_Standing"
 PB_AL_MARHOUN = "Pb_Al_Marhoun"
 UO_BEAL = "uo_Beal"
 UO_GLASO = "uo_Glaso"
-
+VALUES = "values"
 def main():
     wb = xw.Book.caller()
-    sheet = wb.sheets["Datos"]
+    sheet = wb.sheets[SHEET_SUMMAR]
 
 
-    # Import dataframe from Ms. Excel
-    df_bo_calculator = (
-        sheet[STOC_VALUES].options(pd.DataFrame, index=False, expand="table").value
-    )
-
+    PARAMETROS = sheet[VALUES].options(np.array, transpose=True).value
+    print(PARAMETROS)
+    sheet[BO_STANDING].value = Bo(*PARAMETROS)
 
 
 if __name__ == "__main__":
