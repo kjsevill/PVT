@@ -24,7 +24,7 @@ def Rs (colums, P, API=None, T, Yg, Yo=None):
     b=1.877840
     c=-3.1437
     d=-1.32657
-    e=1.39844100
+    e=1.398441
     if colums == "Standing":
         Rs= Yg * (((P/18.2)+1.4) *(10**x))**1.2048
     else:
