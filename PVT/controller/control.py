@@ -8,24 +8,34 @@ from PVT.model.BO import BO
 #Create names for sheets
 SHEET_SUMMAR = "Datos"
 SHEET_RESULTS = "Resultados"
-#Name of columns
 
-VALORES = "Valores"
+# Name of columns for distribution definitions
 VARIABLES = "Variables"
+VALORES = "Valores"
+PARAMETROS= "Parametros"
+CORRELACION= "Correlación"
 
-
-DET_VALUES = "BO_Valores"
-DET_BO = "Bo"
+# Data
+STOC_VALUES = "df_bo_calculator"
+# Result cells # Call range cells from MS Excel
+BO_STANDING = "Bo_STANDING"
+BO_AL_MARHOUN = "Bo_Al_Marhoun"
+RS_STANDING = "Rs_Standing"
+RS_AL_MARHOUN = "Rs_Al_Marhoun"
+PB_STANDING = "Pb_Standing"
+PB_AL_MARHOUN = "Pb_Al_Marhoun"
+UO_BEAL = "uo_Beal"
+UO_GLASO = "uo_Glaso"
 
 def main():
     wb = xw.Book.caller()
     sheet = wb.sheets["Datos"]
 
-    #Calculate Bo
-    params = sheet[DET_VALUES].options(np.array, transpose=True).value
-    print(params)
-    sheet[DET_BO].value = BO(*params)
 
+    # Import dataframe from Ms. Excel
+    df_bo_calculator = (
+        sheet[STOC_VALUES].options(pd.DataFrame, index=False, expand="table").value
+    )
 
 
 
