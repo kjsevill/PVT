@@ -1,51 +1,29 @@
-def BO(Vpt, Vsc):
+def Bo(colums,Rs, Yg, Yo, T ):
     """"
     Parameters
     ---------------
-
-    Vpt:
-        Volumen de fluido a condiciones de reservorio
-
-    Vsc:
-        Volumen de fluido a condiciones Standard
-
+    colums:
+        Correlación usada
+    Rs:
+        Solubilidad del gas en PCN/BN
+    Yg:
+        Gravedad específica del gas en solución
+    Yo:
+        Gravedad específica del crudo en superficie
+    T:
+        Temperatura del sistema en °R
     Returns
-        float number  -> BO
-
+        float number  -> Bo
     """
-    return Vpt / Vsc
-##########################################################################################################
-import xlwings as xw
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from PVT.model.BO import BO
+    a=0.742300
+    b=0.323200
+    c=-1.2020
+    F = (Rs**a) * (Yg**b) * (Yo**c)
 
-#Create names for sheets
-SHEET_SUMMAR = "Datos"
-SHEET_RESULTS = "Resultados"
-#Name of columns
+    if colums == "Standing":
+        Bo = 0.9759 + 0.00012*(Rs*((Yg/Yo)^0.5) + 1.25*(T-460))^(1.2)
+    else:
+        Bo = 0.497069 + 0.862963 * (10**(-3)) * T + 0.182594 * 10**(-2) * F + 0.318099 * 10**(-5) * F**(2)
 
-VALORES = "Valores"
-VARIABLES = "Variables"
+    return Bo
 
-
-DET_VALUES = "BO_Valores"
-DET_BO = "Bo"
-
-def main():
-    wb = xw.Book.caller()
-    sheet = wb.sheets["Datos"]
-
-    #Calculate Bo
-    params = sheet[DET_VALUES].options(np.array, transpose=True).value
-    print(params)
-    sheet[DET_BO].value = BO(*params)
-
-
-
-
-if _name_ == "_main_":
-    xw.Book("control.xlsm").set_mock_caller()
-    main()
