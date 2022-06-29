@@ -14,3 +14,10 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+import math
+a1 = (10.313 * math.log10(500-460)) - 36.447
+print(a1)
+a = 10**(0.43 + (8.33/25))
+print(a)
+uo = (0.32 + ((1.8*(10**280))/(25**4.53))) * (360/(280-260))**a
+print(uo)
