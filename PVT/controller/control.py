@@ -18,14 +18,9 @@ CORRELACION= "Correlación"
 # Data
 STOC_VALUES = "df_bo_calculator"
 # Result cells # Call range cells from MS Excel
-BO_STANDING = "Bo_STANDING"
-BO_AL_MARHOUN = "Bo_Al_Marhoun"
-RS_STANDING = "Rs_Standing"
-RS_AL_MARHOUN = "Rs_Al_Marhoun"
-PB_STANDING = "Pb_Standing"
-PB_AL_MARHOUN = "Pb_Al_Marhoun"
-UO_BEAL = "uo_Beal"
-UO_GLASO = "uo_Glaso"
+PVT_RESULTS = "pvt_results"
+# Indexes of summary results
+BO_STANDING_IDX, BO_AL_MARHOUN_IDX, RS_STANDING_IDX, RS_AL_MARHOUN_IDX, PB_STANDING_IDX, PB_AL_MARHOUN_IDX, UO_BEAL_IXD, UO_GLASO_IDX = 0, 1, 2, 3, 4, 5, 6, 7
 
 def main():
     wb = xw.Book.caller()
@@ -36,7 +31,6 @@ def main():
     df_bo_calculator = (
         sheet[STOC_VALUES].options(pd.DataFrame, index=False, expand="table").value
     )
-
 
 
 if __name__ == "__main__":
