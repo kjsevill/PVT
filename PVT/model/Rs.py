@@ -1,4 +1,4 @@
-def Rs (colums, P, API=None, T, Yg, Yo=None):
+def Rs (colums, P, API, T = None, Yg = None, Yo = None ):
     """"
     Parameters
     ---------------
@@ -26,7 +26,7 @@ def Rs (colums, P, API=None, T, Yg, Yo=None):
     d=-1.32657
     e=1.398441
     if colums == "Standing":
-        Rs= Yg * (((P/18.2)+1.4) *(10**x))**1.2048
+        Rs= (Yg) * (((P/18.2)+1.4) *(10**x))**1.2048
     else:
         Rs= (a *(Yg**b) * (Yo**c) * (T**d) * P)**e
     return Rs
