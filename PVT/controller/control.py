@@ -32,7 +32,7 @@ UO_GLASO = "uo_Glaso"
 VALUES = "Valores"
 CORRELACION_S = "Standing"
 CORRELACION_AL = "AL_MARHOUN"
-CORRELACION_B = "Beal"
+CORRELACION_B = "Beggs & Robinson"
 CORRELACION_G = "Glaso"
 def main():
     wb = xw.Book.caller()
@@ -50,7 +50,10 @@ def main():
         resultsBo[col] = Bo(col, Rs_value, Yg_value, Yo_value, T_value)
         resultsPb[col] = Pb(col, Rs_value, Yg_value, T_value, API_value, Yo_value)
         resultsRs[col] = Rs(col, P_value, API_value, T_value, Yg_value, Yo_value)
-
+    inpt_idx2 = [CORRELACION_B, CORRELACION_G]
+    resultsuo = {}
+    for col2 in inpt_idx2:
+        resultsuo[col2] = uo(col2, API_value, T_value)
 
 
     #for col, idx in input_dict.items():
@@ -73,7 +76,7 @@ def main():
     #Caluclo de la uo por Beal & Glaso
     #sheet[UO_BEAL].value = uo("Beal", API_value, T_value)
     #sheet[UO_GLASO].value = uo("Glaso", API_value, T_value)
-    PVT_summary_result = [resultsBo[CORRELACION_S], resultsBo[CORRELACION_AL], resultsPb[CORRELACION_S], resultsPb[CORRELACION_AL], resultsRs[CORRELACION_S], resultsRs[CORRELACION_AL]]
+    PVT_summary_result = [resultsBo[CORRELACION_S], resultsBo[CORRELACION_AL], resultsPb[CORRELACION_S], resultsPb[CORRELACION_AL], resultsRs[CORRELACION_S], resultsRs[CORRELACION_AL], resultsuo[CORRELACION_B], resultsuo[CORRELACION_G]]
     sheet[BO_STANDING].options(transpose = True).value = PVT_summary_result
     print(PVT_summary_result)
 
